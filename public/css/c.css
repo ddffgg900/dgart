@@ -565,3 +565,12 @@
   top:180px;
   left:50px;
 }
+.barBtn{
+  margin-right: 20px;
+  background: #f1f1c1;
+  border: 1px solid #000;
+  line-height: 20px;
+  position: relative;
+  margin:5%;
+  display: inline-block;
+}
