@@ -1,0 +1,112 @@
+更新{
+  sudo apt-get update
+}
+
+安装node.js{
+  sudo apt-get install nodejs
+  sudo apt-get install npm
+  
+  sudo ln -s /usr/bin/nodejs /usr/bin/node
+}
+
+安装mysql{
+  sudo apt-get install mysql-server
+  apt-get install mysql-client
+  sudo apt-get install libmysqlclient-dev
+  sudo netstat -tap | grep mysql
+}
+
+redis{
+  sudo apt-get install redis-server
+  redis-server
+}
+
+mysql远程访问:{
+  第一步: 激活网络设置
+  你需要编辑mysql配置文件my.cnf.
+
+  通常状况，my.cnf放置于在以下目录：
+  /etc/mysql/my.cnf (Debian linux)
+  /etc/my.cnf （Red Hat Linux/Fedora Linux)
+  /var/db/mysql/my.cnf (FreeBSD)
+
+  # vi /etc/my.cnf
+  然后用vi编辑my.cnf，修改内容从以下行：
+
+  [mysqld]
+
+  你所需要:
+  1. 确保skip-networking被删除或者屏蔽，否则不支持TCP/IP 访问
+  2. 增加行bind-address = 65.55.55.2，替代65.55.55.2 为你的服务器地址
+  修改后，配置为：
+  [mysqld]
+  user = mysql
+  pid-file = /var/run/mysqld/mysqld.pid
+  socket = /var/run/mysqld/mysqld.sock
+  port = 3306
+  basedir = /usr
+  datadir = /var/lib/mysql
+  tmpdir = /tmp
+  language = /usr/share/mysql/English
+  #bind-address = 65.55.55.2
+  # skip-networking
+  ....
+  ..
+
+  保存并关闭配置文件
+  重启mysql服务器: # /etc/init.d/mysql restart
+
+  第二步， 给远程ip授访问权限
+  1. 以root身份登陆mysql # mysql -u root -p
+  2. 授权给新数据库
+  如果你有一个新的数据库名称为foo。用户bar需要在客户端地址为202.54.10.20上访问。
+
+  在服务器端执行 （授权法）：
+  mysql> CREATE DATABASE foo;
+  mysql> GRANT ALL ON foo.* TO bar@'202.54.10.20' IDENTIFIED BY 'PASSWORD';
+
+  如何给以存在的数据库授权？
+
+  如果用户 webadmin 经常在客户端地址202.54.10.20 访问 webd数据库，那么在服务器端执行的命令应该为（改表法）：
+
+  mysql> update db set Host='202.54.10.20' where Db='webdb';
+  mysql> update user set Host='202.54.10.20' where user='webadmin';
+
+  第三步： 执行exit命令退出mysql环境，
+
+  第四步 测试
+  From remote system type command:
+  $ mysql -u webadmin —h 65.55.55.2 —p
+
+  注解；
+  -u webadmin: webadmin为mysql的用户名 
+  -h IP or 域名: 65.55.55.2 is MySQL server IP address or hostname (FQDN) 
+  -p : 密码提示
+  你也可以使用telnet去连接远程的3306端口 $ telnet 65.55.55.2 3306
+}
+
+express生成应用{
+  npm install -g pm2
+  npm install express-generator -g
+  cd /srv
+  express dgart
+  cd dgart
+  npm install
+  npm install mysql
+  npm install express-session --save
+  npm install redis-connector
+  
+  
+  测试
+  DEBUG=dgart npm start
+  
+  pm2 start ./bin/www
+}
+
+req中的请求参数{
+   if(method == "GET"){
+    params = req.query;
+  }else{
+    params = req.body;
+  }
+}

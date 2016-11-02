@@ -1,0 +1,12 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.editor_div{
+  position: absolute;
+}
+.form_div{
+  position: absolute;
+  left: 900px;
+  
+}
