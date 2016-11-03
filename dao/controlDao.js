@@ -245,6 +245,9 @@ methods.listPastWork = function(req, res, next){
   }
   values = [param.user_id];
   sql = sqlMapping.DGvw_pastWork.list;
+  if(param.limit){
+    sql+=" LIMIT "+param.limit;
+  }
   pool.getConnection(function(err, conn) {
     if(err){
       return util.raiseErr(res, [200, "conn err:" + err]);
@@ -365,6 +368,7 @@ methods.listUserMission = function(req, res, next){
       return util.raiseErr(res, 200, "conn err:" + err);
     }
     util.query(conn, sql, values, function(result){
+      conn.release();
       if(result.status==0){
         return util.raiseErr(res, result.info);
       } else {

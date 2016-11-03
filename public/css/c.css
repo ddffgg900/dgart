@@ -452,7 +452,7 @@
 }
 .ratingStar{
   position: relative;
-  margin: 5%;
+  margin-left: 5%;
   width: 90%;
 }
 .ratingTutorial{
@@ -573,4 +573,7 @@
   position: relative;
   margin:5%;
   display: inline-block;
+}
+.inlineBtn-checked{
+  background:#c1c1c1;
 }

@@ -496,6 +496,50 @@ var user = new function(){
   var that = this;
   that.keyword = "";
   that.content = $(main.contents[3]);
+  var default1 = [
+    {
+      mission_id:4,
+      title:"切面入门特训"
+    },
+    {
+      mission_id:5,
+      title:"切大面煮"
+    },
+    {
+      mission_id:6,
+      title:"切大面BOSS战"
+    },
+    {
+      mission_id:7,
+      title:"切面煮升级训练"
+    },
+    {
+      mission_id:8,
+      title:"切小面煮"
+    }
+  ];
+  var default2 = [
+    {
+      mission_id:7,
+      title:"切面煮升级训练"
+    },
+    {
+      mission_id:6,
+      title:"切大面BOSS战"
+    },
+    {
+      mission_id:4,
+      title:"切面入门特训"
+    },
+    {
+      mission_id:5,
+      title:"切大面煮"
+    },
+    {
+      mission_id:8,
+      title:"切小面煮"
+    }
+  ];
   var userContent = $(that.content.C[0])
   var searchInputs = userContent.getElementsByClassName("search");
   $(searchInputs[0]).KD(function(e){
@@ -563,28 +607,11 @@ var user = new function(){
     });
   }
   var userMissionZone = $(usercontent.C[1].children[0].children[1]);
-  that.listUserMission = function(){
-    var str = '<div class = "mission"><span>11111</span><div class = "userMissionC"><div class = "inlineBtn">up</div><div class = "inlineBtn">down</div><div class = "inlineBtn">del</div></div></div>';
+  that.listUserMission = function(result){
+    
     userMissionZone.innerHTML = "";
     $.each(result, function(i, item){
-      div = userMissionZone.CC("div").S({CN:"item", I:str});
-      div.children[0].children[0].innerHTML = item.title;
-      div.mission_id = item.mission;
-      $(div.children[0].children[1].children[0]).CK(function(e){
-        if(e.PN().PN().PN().previousSibling){
-          $.domExchange(e.PN().PN().PN().previousSibling, e.PN().PN().PN());
-        }
-      });
-      $(div.children[0].children[1].children[1]).CK(function(e){
-        if(e.PN().PN().PN().nextSibling){
-          $.domExchange(e.PN().PN().PN().nextSibling, e.PN().PN().PN());
-        }
-      });
-      
-      div.children[0].children[1].children[2].mission_id = item.mission_id;
-      $(div.children[0].children[1].children[2]).CK(function(e){
-        userMissionZone.removeChild(e.PN().PN().PN());
-      });
+      that.addMission(item);
     });
   }
   var missionContent = $(usercontent.C[1].children[1]);
@@ -611,6 +638,46 @@ var user = new function(){
       }
     });
   }
+  that.addMission = function(obj, add){
+    var str = '<div class = "mission"><span></span><div class = "userMissionC"><div class = "inlineBtn">上方插入</div><div class = "inlineBtn">del</div></div></div>';
+    var div;
+    if(add && add==true){
+      var num = 0;
+      $.each(userMissionZone.C, function(i, item){
+        
+        if(item.children[0].children[1].children[0].checked ==1 && num ==0){
+          div = document.createElement("div");
+          userMissionZone.insertBefore(div, item);
+          $(div).S({CN:"item", I:str});
+          num++;
+        }
+      })
+      if(num==0){
+        div = userMissionZone.CC("div").S({CN:"item", I:str});
+      }
+    }
+    else {
+      div = userMissionZone.CC("div").S({CN:"item", I:str});
+    }
+    div.children[0].children[0].innerHTML = obj.title;
+    div.mission_id = obj.mission_id;
+    $(div.children[0].children[1].children[0]).CK(function(e){
+      if(e.checked==1){
+        e.checked = 0;
+        e.removeClass("inlineBtn-checked");
+      } else {
+        $.each(userMissionZone.children, function(i, item){
+          item.children[0].children[1].children[0].checked =0;
+          $(item.children[0].children[1].children[0]).removeClass("inlineBtn-checked");
+        });
+        e.checked = 1;
+        e.addClass("inlineBtn-checked");
+      }
+    });
+    $(div.children[0].children[1].children[1]).CK(function(e){
+      userMissionZone.removeChild(e.PN().PN().PN());
+    });
+  }
   that.listMission = function(result){
     var str = '<div class = "mission"><span></span><div class = "itemBtn"  style = "float:right">添加</div></div>';
     missionZone.innerHTML = "";
@@ -621,29 +688,21 @@ var user = new function(){
       div.mission_id = item.mission_id;
       div.children[0].children[1].title = item.title;
       $(div.children[0].children[1]).CK(function(e1){
-        div = userMissionZone.CC("div").S({CN:"item", I:'<div class = "mission"><span>11111</span><div class = "userMissionC"><div class = "inlineBtn">up</div><div class = "inlineBtn">down</div><div class = "inlineBtn">del</div></div></div>'});
-        div.children[0].children[0].innerHTML = e1.title;
-        div.mission_id = e1.mission_id;
-        $(div.children[0].children[1].children[0]).CK(function(e){
-          if(e.PN().PN().PN().previousSibling){
-            $.domExchange(e.PN().PN().PN().previousSibling, e.PN().PN().PN());
-          }
-        });
-        $(div.children[0].children[1].children[1]).CK(function(e){
-          if(e.PN().PN().PN().nextSibling){
-            $.domExchange(e.PN().PN().PN().nextSibling, e.PN().PN().PN());
-          }
-        });
-        
-        div.children[0].children[1].children[2].mission_id = e1.mission_id;
-        $(div.children[0].children[1].children[2]).CK(function(e){
-          userMissionZone.removeChild(e.PN().PN().PN());
-        });
+        var obj = {title: e1.title, mission_id: e1.mission_id};
+        that.addMission(obj, true);
       });
     });
   }
-  var missionBtn = $(usercontent.C[1].children[0].children[0]);
-  missionBtn.CK(function(e){
+  var defaultBtn1 = $(usercontent.C[1].children[0].children[0]);
+  defaultBtn1.CK(function(){
+    that.listUserMission(default1);
+  });
+  var defaultBtn2 = $(usercontent.C[1].children[0].children[1]);
+  defaultBtn2.CK(function(){
+    that.listUserMission(default2);
+  });
+  var submitBtn = $(usercontent.C[1].children[0].children[0].children[2]);
+  submitBtn.CK(function(e){
     var values = {};
     values.user_id = that.user_id;
     values.course_id = that.course_id;
@@ -670,8 +729,12 @@ var user = new function(){
     that.getPastWorkList();
   }
   var pastWorkZone = $(pastWorkContent.C[1].children[0]);
-  that.getPastWorkList = function(){
+  that.getPastWorkList = function(limit){
+    
     var values = {user_id:that.user_id, course_id:that.course_id};
+    if(limit){
+      values.limit = limit;
+    }
     $.get(reqMapping.control.listPastWork,values,function(html){
       var obj = JSON.parse(html);
       if(obj.status==0){
