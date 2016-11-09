@@ -313,7 +313,7 @@ methods.addRating = function(req, res, next){
             if(result.status==0){
               return cb(result.info);
             } else {
-              return cb(null);
+              return cb(null, true);
             }
           });
         },
@@ -417,7 +417,7 @@ methods.setMissionLine = function(req, res, next){
             });
           });
          
-          return cb(null);
+          return cb(null, true);
          
           //console.log(sql);
         }

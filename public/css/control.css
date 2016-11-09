@@ -1,132 +1,3 @@
-.event-tabs {
-  position: absolute;
-	width: 100%;
-  height: 90%;
-  
-}
-
-.event-input {
-	position: absolute;
-	left: 0px;
-	opacity: 0;
-}
-
-.event-label{
-	font-size: 15px;
-	height: 90px;
-  width:104px;
-	position: relative;
-	display: block;
-	color: #6a6a6b;
-	clear: both;
-  top:130px;
-  border-left:4px solid #2c3237;
-  text-align:center;
-  padding-top:20px;
-  margin-left:6px;
-  z-index:3;
-}
-
-.event-img{
-  margin-left: 33px;
-  margin-bottom:20px;
-}
-.event-label:hover{
-  border-left:4px solid #f1ba5f;
-  color: #f1ba5f;
-}
-
-.event-input:checked + .event-label {
-  border-left:4px solid #f1ba5f;
-  color: #f1ba5f;
-}
-#to-mission:checked ~ .first-content #mission-content,
-#event-2:checked ~ .first-content #stage-content{
-  display:block;
-}
-.mission-tabs{
-  position:absolute;
-  width: 100%;
-  height:100%;
-}
-.mission-input{
-  display:none;
-   
-}
-.mission-label{
-	font-size: 18px;
-  position:relative;
-  font-weight:bold;
-  width:240px;
-  border-right:1px solid #d3d7da;
-  border-bottom:1px solid #d3d7da;
-  text-align:center;
-  line-height:64px;
-  background:#f8f8f8;
-  float:left; 
-}
-.mission-content{
-  position:absolute;
-  background:#fff;
-  top: 65px;
-  left:0;
-  height:90%;
-  width:100%;
-  display:none;
-}
-.mission-input:checked + .mission-label {
-  border-bottom:1px solid #fff;
-  background:#fff;
-}
-#mission-1:checked ~ div#mission-content-1,
-#mission-2:checked ~ div#mission-content-2,
-#mission-3:checked ~ div#mission-content-3{
-  display:block;
-}
-
-
-.content-blank{
-  position:absolute;
-  top:0;
-  left:0;
-  height:64px;
-  width:100%;
-  border-bottom:1px solid #d3d7da;
-  
-}
-
-.portrait{
-  position:absolute;
-  top: 25px;
-  left:16px;
-  width:74px;
-  height:auto;
-  border-radius: 37px;
-  
-}
-
-
-.first-content {
-  background: #f1f1f1;
-	position: absolute;
-  width: 91%;
-  top:79px;
-  left:110px;
-	height: 95%;
-	z-index: 1;
-  border-top:1px solid #d3d7da;
-  border-right:1px solid #d3d7da;
-  border-bottom:1px solid #d3d7da;
-}
-
-.second-content{
-  position: absolute;
-  display:none;
-  width:100%;
-  height:100%;
-}
-
-
 .main{
   position: fixed;
   background: #f1f1f1;
@@ -144,24 +15,129 @@
   background:#2c3237;
   border-left:6px solid #20252a;
   box-shadow:1px 0px 1px #000;
-  z-index:2;
+  z-index:3;
 }
-#refresh{
+
+
+
+.portrait{
   position:absolute;
-  top:24px;
-  left:130px;
+  top: 25px;
+  left:16px;
+  width:74px;
+  height:auto;
+  border-radius: 37px;
+  
 }
-.center{
+.action{
+  position: absolute;
+	width: 100%;
+  height: 90%;
+}
+.actionTab{
+	font-size: 15px;
+	height: 90px;
+  width:100px;
+	position: relative;
+	display: block;
+	color: #6a6a6b;
+	clear: both;
+  top:130px;
+  border-left:4px solid #2c3237;
+  text-align:center;
+  padding-top:20px;
+}
+.actionTab:hover{
+	font-size: 15px;
+	height: 90px;
+  width:100px;
+	position: relative;
+	display: block;
+	clear: both;
+  top:130px;
+  text-align:center;
+  padding-top:20px;
+  border-left: 4px solid #f1ba5f;
+  color: #f1ba5f;
+}
+
+.actionTab-checked{
+  border-left: 4px solid #f1ba5f;
+  color: #f1ba5f;
+}
+.actionTab img{
+  margin-left: 33px;
+  margin-bottom:20px;
+}
+.right{
+  background: #f1f1f1;
+	position: absolute;
+  width: 91%;
+  top:79px;
+  left:111px;
+	height: 80%;
+	z-index: 2;
+  border-top:1px solid #d3d7da;
+  
+}
+.content{
   position:absolute;
-  top:4.5%;
-  left:2%;
-  width:96%;
-  height:92%;
-  border:1px solid #e0e0e0;
-  border-radius:5px;
+  width: 100%;
+  height: 100%;
+}
+.content{
+  position:absolute;
+  width: 100%;
+  height: 100%;
+}
+.contentBar{
+  position:relative;
+  top:0;
+  left:0;
+  height:64px;
+  width:100%;
+  border-bottom:1px solid #d3d7da;
+  border-right:1px solid #d3d7da;
+  
+}
+.contentTag{
+  font-size: 18px;
+  position:relative;
+  font-weight:bold;
+  width:240px;
+  border-right:1px solid #d3d7da;
+  border-bottom:1px solid #d3d7da;
+  text-align:center;
+  line-height:64px;
+  height:64px;
+  background:#f8f8f8;
+  float:left; 
+}
+.contentTag-checked{
+  border-bottom:1px solid #fff;
+  background:#fff;
+}
+.contentMain{
+  position:relative;
+  top:0;
+  left:0;
+  height:100%;
+  width:100%;
+  border-bottom:1px solid #d3d7da;
+  border-right:1px solid #d3d7da;
+  background:#fff;
+}
+.contentPage{
+  position: absolute;
+  top: 4.5%;
+  left: 2%;
+  width: 96%;
+  height: 92%;
+  border: 1px solid rgb(224, 224, 224);
+  border-radius: 5px;
   overflow:hidden;
 }
-.center-bar{
+.contentPageBar{
   position:relative;
   top:0;
   left:0;
@@ -169,13 +145,6 @@
   height:73px;
   border-bottom:1px solid #e0e0e0;
   
-}
-.item-list{
-  width:100%;
-  position:relative;
-  height:85%;
-  overflow-y:scroll;
-  overflow-x:hidden;
 }
 .search{
   position:absolute;
@@ -189,17 +158,90 @@
   font-size:20px;
   
 }
-.add{
+.missionAddBtn{
   position:absolute;
   top:0;
   right:2%;
   top:50%;
   margin-top:-20px;
 }
-
+.missionAdd{
+  position:relative;
+  width:100%;
+  height:220px
+}
+.missionAddTitle{
+  position:absolute;
+  top:13px;
+  left:0;
+  padding-left:50px;
+}
+.missionAddTitle input{
+  width:300px;
+  float:right;
+}
+.missionAddIntro input{
+  width:300px;
+  float:right;
+}
+.missionAddRule{
+  position:absolute;
+  top:90px;
+  left:0;
+  padding-left:50px;
+}
+.missionAddRule textarea{
+  display:block;
+  float:right;
+  width:300px;
+  height:80px;
+  resize:none;
+}
+.missionAddExample{
+  position:absolute;
+  top:13px;
+  left:400px;
+}
+.missionAddLine{
+  position:absolute;
+  top:180px;
+  left:250px;
+}
+.missionAddIntro{
+  position:absolute;
+  top:50px;
+  left:0;
+  padding-left:50px;
+}
+.missionAddImg{
+  position:absolute;
+  top:33px;
+  left:40px;
+  width:600px;
+  height:160px;
+  border:1px solid #000;
+}
+.missionAddOperation{
+  position:absolute;
+  right:0;
+  width:100px;
+}
+.missionAddSubmit{
+  width:50px;
+  height:20px;
+  border:1px solid black;
+}
+.itemList{
+  width:100%;
+  position:relative;
+  height:85%;
+  overflow-y:scroll;
+  overflow-x:hidden;
+}
 .item{
   position:relative;
   width:100%;
+  
 }
 .mission{
   position:relative;
@@ -215,7 +257,7 @@
 .mission span{
   margin-left:20px;
 }
-.mission-info{
+.missionInfo{
   position:relative;
   top:0;
   left:0;
@@ -223,7 +265,7 @@
   width:100%;
   background:#f9f9f9;
 }
-.mission-open{
+.missionOpen{
   position:absolute;
   top:0;
   right:2%;
@@ -294,8 +336,244 @@
   border:1px solid black;
   
 }
-.center-add{
+.itemBtn{
+  margin-right:20px;
+  background:#f1f1c1;
+  border:1px solid #000;
+  line-height:20px;
+  position: relative;
+  right: 2%;
+  top: 50%;
+  margin-top: -20px;
+  display: inline-block;
+}
+.workLeft{
+  position:absolute;
+  top:2%;
+  left:2%;
+  width:26%;
+  height:95%;
+  border:1px solid #c1c1c1;
+  overflow-y:scroll;
+}
+.workRight{
+  position:absolute;
+  top:2%;
+  right:2%;
+  width:69%;
+  height:95%;
+  border:1px solid #c1c1c1;
+  
+}
+.alertContent{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:999;
+}
+.alertBG{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.5);
+}
+.alertCenter{
+  position:absolute;
+  top:5%;
+  left:5%;
+  width:90%;
+  height:90%;
+  background: #fff;
+}
+.newWork{
+  width:100%;
+  border-bottom:1px solid #c1c1c1;
+  height:100px;
+  position:relative;
+}
+.newWorkAvatar{
+  position:absolute;
+  top:10px;
+  left:10px;
+  width:20px;
+  
+}
+.newWorkNickname{
+  position:absolute;
+  top:10px;
+  left:80px;
+  
+}
+.newWorkTitle{
+  position:absolute;
+  top:60px;
+  left:100px;
+  
+}
+.workInfo{
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  left: 0;
+  border-right: 1px solid #c1c1c1;
+}
+.workInfoImg{
+  margin-top: 5%;
+  position: relative;
+  margin-left: 10%;
+  width: 80%;
+  height: 60%;
+}
+.workInfoMsg{
+  position: relative;
+  margin-top: 5%;
+  margin-left: 10%;
+  height: 20%;
+  width: 80%;  
+}
+.workRating{
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 50%;
+  width:49%;
+}
+.ratingMsg{
+  resize: none;
+  position: relative;
+  margin: 5%;
+  width: 91%;
+  height: 40%;
+  
+}
+.ratingStar{
+  position: relative;
+  margin-left: 5%;
+  width: 90%;
+}
+.ratingTutorial{
+  position: relative;
+  margin: 5%;
+  height: 20%;
+  width: 90%;
+  background: #fff;
+}
+.choseTutorial{
+  position: relative;
+  display: inline-block;
+  background: #a1a1a1;
+  color: #fff;
+  width: 30%;
+  text-align: center;
+  margin-left: 2%;
+  margin-top:1%;
+}
+.pastWork{
+  border-top:1px solid #c1c1c1;
+  position:absolute;
+  overflow-y:scroll;
+  width:100%;
+  height:50%;
+  top:50%;
+}
+.pastWorkItem{
   position:relative;
   width:100%;
-  height:220px
+  height:100%;
+  border-bottom:1px solid #c1c1c1;
+}
+.pastWorkLeft{
+  position:absolute;
+  width:50%;
+  height:100%;
+}
+.pastWorkRight{
+  position:absolute;
+  width:50%;
+  height:100%;
+  left:50%;
+}
+.pastWorkTime{
+  position:relative;
+  margin:5%;
+}
+.missionImgs{
+  position:relative;
+  width:10%;
+  height:50%;
+  display:inline-block;
+}
+#refresh{
+  position:absolute;
+  top:24px;
+  left:130px;
+}
+.userContent{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#fff;
+  border-bottom:1px solid #c1c1c1;
+  border-right:1px solid #c1c1c1;
+}
+.userNickname{
+  position:relative;
+  display:inline-block;
+  top:0;
+  left:0;
+  text-align:center;
+  width:30%;
+  line-height: 72px;
+}
+.missionLineEnter{
+  position:relative;
+  display:inline-block;
+  top:0;
+  float:right;
+  text-align:center;
+  width:30%;
+  line-height: 72px;
+}
+.userMissionC{
+  position:absolute;
+  top:0;
+  left:50%;
+}
+.inlineBtn{
+  display:inline-block;
+  text-align:center;
+  padding:5px;
+  border:1px solid #555;
+  line-height:20px;
+}
+.userLeft{
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  width: 26%;
+  height: 95%;
+  border: 1px solid #c1c1c1;
+}
+.missionAddCategory{
+  position:absolute;
+  top:180px;
+  left:50px;
+}
+.barBtn{
+  margin-right: 20px;
+  background: #f1f1c1;
+  border: 1px solid #000;
+  line-height: 20px;
+  position: relative;
+  margin:5%;
+  display: inline-block;
+}
+.inlineBtn-checked{
+  background:#c1c1c1;
 }

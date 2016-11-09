@@ -13,7 +13,8 @@ var reqMapping = {
     listUserMission: host + "/control/listUserMission",
     setMissionLine: host + "/control/setMissionLine"
   },
-  common:{
-    checkLogin: host + "/control/checkLogin"
+  index:{
+    login: host + "/login",
+    clock: host + "/clock"
   }
 }

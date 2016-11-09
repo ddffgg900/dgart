@@ -1,7 +1,6 @@
 var $moment = require("moment");
 var util = {};
 var i;
-var $async = require('async');
 util.write = function (res, ret) {
   var result = {};
   result.status = 1;

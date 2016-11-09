@@ -2,8 +2,13 @@ module.exports = {
   DG_user:{
     count: "SELECT COUNT(user_id) as cnt FROM DG_user ",
     insert: "INSERT INTO DG_user (?) VLAUES (?)",
-    update: "UPDATE DG_user SET ",
-    list: "SElECT ?? FROM DG_user "
+    update: "UPDATE DG_user SET ? ",
+    lastLogin: "UPDATE DG_user SET lastLogin = ? WHERE `user_id` = ?",
+    checkLastLogin: "SELECT COUNT(user_id) as cnt FROM DG_user WHERE `user_id` = ? AND date(lastLogin) = curdate()",
+    addClock: "UPDATE DG_user SET continueClock = continueClock + 1 WHERE `user_id` = ?",
+    clearClock: "UPDATE DG_user SET continueClock = 1 WHERE `user_id` = ?",
+    list: "SElECT ?? FROM DG_user ",
+    addDay: "UPDATE DG_user SET `during` = `during` + 1 WHERE `user_id` = ?"
   },
   DG_mission:{
     insert: "INSERT INTO DG_mission SET ? ",//{username:'hello'}
@@ -33,14 +38,17 @@ module.exports = {
     insert: "INSERT INTO DGrlt_rating_tutorial SET ? ",//{username:'hello'}
     del: "DELETE FROM DGrlt_rating_tutorial",//{username:'hello'}
   },
-  DG_user:{
-    list:"SELECT ?? FROM DG_user "
-  },
   DGvw_userMission:{
     list:"SELECT ?? FROM DGvw_userMission "
   },
   DG_missionLine:{
     del: "DELETE FROM DG_missionLine ",//{username:'hello'}
     insert: "INSERT INTO DG_missionLine SET ? ",//{username:'hello'}
+  },
+  DGlog_user_clock:{
+    count: "SELECT COUNT(user_id) as cnt FROM DGlog_user_clock ",
+    checkClock: "SELECT COUNT(user_id) as cnt FROM DGlog_user_clock WHERE `user_id` = ? AND date(createtime) = curdate()",
+    insert: "INSERT INTO DGlog_user_clock SET ? ",
+    checkContinueClock:" SELECT COUNT(user_id) as cnt FROM DGlog_user_clock WHERE  `user_id` = ? AND date(createtime) = date_sub(curdate(),interval 1 day)"
   }
 };

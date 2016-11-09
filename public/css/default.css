@@ -7,6 +7,10 @@
 img{
   display: block;
 }
+a:link { text-decoration: none;}
+a:active { text-decoration:none}
+a:hover { text-decoration:none;} 
+a:visited { text-decoration: none;}
 
 ::-webkit-scrollbar {  
   width: 14px;  
@@ -31,4 +35,4 @@ img{
   
 ::-webkit-scrollbar-corner {  
   background: transparent;  
-}  
+}
